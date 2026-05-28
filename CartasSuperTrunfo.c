@@ -1,23 +1,23 @@
 #include <stdio.h>
 #include <string.h>
 
-// Desafio Super Trunfo - Países
-// Tema 1 - Cadastro das cartas
-// Objetivo: No nível novato você deve criar as cartas representando as cidades utilizando scanf para entrada de dados e printf para exibir as informações.
-
-int main() {
-  // Área para definição das variáveis para armazenar as propriedades das cidades
+int main()
+{
+	// Area para definir variáveis
 	
-  char estado1, estado2;
+	char estado1, estado2;
 	char codigoCarta1[5], codigoCarta2[5];
 	char nomeCidade1[50], nomeCidade2[50];
 	int populacaoCidade1, populacaoCidade2;
+	int qtdPontosTuristicosCidade1, qtdPontosTuristicosCidade2;
 	float areaCidade1, areaCidade2;
 	float pibCidade1, pibCidade2;
-	int qtdPontosTuristicosCidade1, qtdPontosTuristicosCidade2;
-  
-  // Área para entrada de dados
-// Cadastrar Carta 1
+	float densidadePopulacional1, densidadePopulacional2;
+	float pibPerCapita1, pibPerCapita2;
+		
+	// Area para configurar o cadastro de cartas
+	
+	// Cadastrar Carta 1
 	
 	printf("Cadastrar Carta 1:\n\n");
 
@@ -26,7 +26,9 @@ int main() {
 
 	printf("Digitar codigo da carta (letra do Estado e n. 01 a 04): ");
 	scanf(" %s", codigoCarta1);
-	
+
+	getchar(); // Limpa o caractere '\n' que ficou no buffer antes de usar o fgets	
+
 	printf("Digitar o nome da cidade: ");
 	fgets(nomeCidade1, 50, stdin);
 	nomeCidade1[strcspn(nomeCidade1, "\n")] = 0;
@@ -42,7 +44,7 @@ int main() {
 	
 	printf("Digitar a quantidade de pontos turisticos na cidade: ");
 	scanf("%d", &qtdPontosTuristicosCidade1);
-	
+		
 	// Cadastrar Carta 2
 	
 	printf("\n\nCadastrar Carta 2:\n\n");
@@ -53,6 +55,7 @@ int main() {
 	printf("Digitar codigo da carta (letra do Estado e n. 01 a 04): ");
 	scanf(" %s", codigoCarta2);
 	
+	getchar(); // Limpa o caractere '\n' que ficou no buffer antes de usar o fgets
 	printf("Digitar o nome da cidade: ");
 	fgets(nomeCidade2, 50, stdin);
 	nomeCidade2[strcspn(nomeCidade2, "\n")] = 0;
@@ -67,10 +70,20 @@ int main() {
 	scanf("%f", &pibCidade2);
 	
 	printf("Digitar a quantidade de pontos turisticos na cidade: ");
-	scanf("%d", &qtdPontosTuristicosCidade2);
+	scanf("%d", &qtdPontosTuristicosCidade2);	
+		
+	// Calculos
+	
+	densidadePopulacional1 = populacaoCidade1 / areaCidade1;
+	densidadePopulacional2 = populacaoCidade2 / areaCidade2;
+	
+	pibPerCapita1 = pibCidade1 / areaCidade1;
+	pibPerCapita2 = pibCidade2 / areaCidade2;
 
-  // Área para exibição dos dados da cidade
-  	// Imprimir Carta 1
+
+	// Area para imprimir as cartas
+	
+	// Imprimir Carta 1
 	
 	printf("\n\nCarta 1:\n\n");
 	printf("Estado: %c\n", estado1);
@@ -79,7 +92,9 @@ int main() {
 	printf("Populacao: %d\n", populacaoCidade1);
 	printf("Area: %.2f\n", areaCidade1);
 	printf("PIB: %.2f bilhoes de reais\n", pibCidade1);
-	printf("Numero de pontos turisticos: %d", qtdPontosTuristicosCidade1);
+	printf("Numero de pontos turisticos: %d\n", qtdPontosTuristicosCidade1);
+	printf("Densidade populacional: %.2f\n", densidadePopulacional1);
+	printf("PIB per Capita: %.2f", pibPerCapita1);
 	
 	// Imprimir Carta 2
 	
@@ -90,7 +105,9 @@ int main() {
 	printf("Populacao: %d\n", populacaoCidade2);
 	printf("Area: %.2f\n", areaCidade2);
 	printf("PIB: %.2f bilhoes de reais\n", pibCidade2);
-	printf("Numero de pontos turisticos: %d\n\n", qtdPontosTuristicosCidade2);
+	printf("Numero de pontos turisticos: %d\n", qtdPontosTuristicosCidade2);
+	printf("Densidade populacional: %.2f\n", densidadePopulacional2);
+	printf("PIB per Capita: %.2f\n\n", pibPerCapita2);
 
-  return 0;
-} 
+return 0;
+}
